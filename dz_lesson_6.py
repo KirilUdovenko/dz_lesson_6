@@ -10,16 +10,20 @@
 #
 
 ##############
-
+import re
 # def name_file(names):
 
 
 
 with open("names.txt", "r") as txt_file:
-    name = txt_file.readlines()
+    name = txt_file.read()
+    str_1 = ''.join(name)
+    # numbers = re.findall(r"[0-9]+", str_1)
+    str_2 = re.sub(r'[^\w\s]+|[\d]+', r'', str_1).strip().split("\n")
+    print(str_2)
+with open("names_2.txt", "w") as txt_file:
+    txt_file.writelines(str_2)
+with open("names_2.txt", "r") as txt_file:
+    second_name = txt_file.readlines()
 
-print(name)
 
-
-# with open("names.txt", "r") as txt_file:
-#     name = txt_file.readlines()
